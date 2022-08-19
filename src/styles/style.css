@@ -104,10 +104,11 @@ header p {
   grid-template-columns: 1fr;
   row-gap: 2.5rem;
   text-align: center;
+  align-items: center;
 }
 
 .wrapper {
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -132,6 +133,7 @@ header p {
   font-size: 2rem;
   font-weight: 700;
   color: var(--col-desaturated-blue);
+  margin-right: 0.25em;
 }
 
 .card__bottom {
@@ -140,7 +142,7 @@ header p {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: 1.5rem;
+  padding: 3rem 0;
 }
 .card__bottom button {
   background-color: var(--col-desaturated-blue);
@@ -189,7 +191,6 @@ header p {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 0;
   }
   .bottom__section {
     margin-bottom: 0;
@@ -264,7 +265,9 @@ input[type=range]::-ms-thumb {
 .toggle__section {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: clamp(0.7em, 3%, 1.5em);
+  flex-wrap: wrap;
 }
 .toggle__section span {
   width: -webkit-max-content;
