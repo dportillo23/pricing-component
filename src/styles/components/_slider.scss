@@ -1,0 +1,57 @@
+@mixin thumb($size, $color){
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    background: $color;
+    cursor: pointer;
+    background-image: url("../images/icon-slider.svg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+$thumbSize: 2.25rem;
+
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 0.5rem;
+    width: 100%;
+    background: var(--col-light-gray-blue);
+    border-radius: 1rem;
+    background-image: linear-gradient(rgb(var(--col-soft-cyan)), rgb(var(--col-soft-cyan)));
+    background-repeat: no-repeat;
+  }
+
+  input[type=range]:active {
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      cursor: grabbing;
+    }
+
+    &::-moz-range-thumb {
+      cursor: grabbing;
+    }
+
+    &::-ms-thumb {
+      cursor: grabbing;
+    }
+  }
+
+//   Thumb
+  input[type=range]::-webkit-slider-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
+
+  input[type=range]::-moz-range-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
+
+  input[type=range]::-ms-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
+
+// Track

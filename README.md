@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# Frontend Mentor - Interactive pricing component solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Interactive pricing component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-pricing-component-t0m8PIyY8). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-### `npm start`
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Use the slider and toggle to see prices for different page view numbers
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./screenshot.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
 
-### `npm run eject`
+Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Links
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## My process
 
-## Learn More
+### Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### What I learned
 
-### Code Splitting
+In the css (scss) side, I learned about input range customization. In the React (jsx) side, it was nice to practice some logic and make it work.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+```scss
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 0.5rem;
+    width: 100%;
+    background: var(--col-light-gray-blue);
+    border-radius: 1rem;
+    background-image: linear-gradient(rgb(var(--col-soft-cyan)), rgb(var(--col-soft-cyan)));
+    background-repeat: no-repeat;
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  input[type=range]:active {
+    outline: none;
 
-### Making a Progressive Web App
+    &::-webkit-slider-thumb {
+      cursor: grabbing;
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    &::-moz-range-thumb {
+      cursor: grabbing;
+    }
 
-### Advanced Configuration
+    &::-ms-thumb {
+      cursor: grabbing;
+    }
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+//   Thumb
+  input[type=range]::-webkit-slider-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
 
-### Deployment
+  input[type=range]::-moz-range-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  input[type=range]::-ms-thumb {
+    @include thumb($thumbSize, var(--col-strong-cyan));
+    box-shadow: 0 0.25rem 1.5rem 0.75rem rgb(var(--col-soft-cyan));
+  }
+```
+```jsx
+    // Functions
+    function handleSlider(e) {
+        const newValue = e.target.value;
+        setSliderValue(newValue);
+        setViews(choices[newValue].views);
+        setPrices(choices[newValue].price)
+        setFinalPrice(choices[newValue].price * factor)
+    }
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    function handleToggle(e) {
+        const isChecked = e.target.checked ? 0.75 : 1
+        setToggled(!toggled)
+        setFactor(isChecked)
+        setFinalPrice(prices * isChecked)
+    }
+```
+
+### Continued development
+
+It's always nice to keep practicing React, adding some extra stuff to learn, and keep practicing logic, I liked this one.
+
+
+### Useful resources
+
+- [Styling Cross-Browser Compatible Range Inputs with CSS](https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/) - This explains in a detailed manner how to customize a input range. Very good post as almost every post from CSS-tricks.
+
+## Author
+
+- Website - [Daniel Portillo](https://www.danielportillo.dev)
+- Frontend Mentor - [@dportillo23](https://www.frontendmentor.io/profile/dportillo23)
+- Twitter - [@DaniDev23](https://twitter.com/DaniDev23)
+
